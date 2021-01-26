@@ -82,6 +82,10 @@ export default {
     display: flex;
     border-radius: 10px;
   }
+  .liga:hover
+  {
+    opacity: 0.8;
+  }
   .liga img
   {
     width: 25px;
@@ -111,6 +115,10 @@ export default {
     margin-right: 8px;
     border-radius: 10px;
   }
+  .all:hover
+  {
+    opacity: 0.8;
+  }
   .option
   {
     cursor: pointer;
@@ -121,5 +129,9 @@ export default {
     height: 35px;
     width: 100px;
     border-radius: 10px;
+  }
+  .option:hover
+  {
+    opacity: 0.8;
   }
 </style>
