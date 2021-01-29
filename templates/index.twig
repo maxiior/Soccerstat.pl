@@ -1,0 +1,37 @@
+{% extends "main.twig" %}
+
+{% block style %}
+<link rel="stylesheet" href="./index.css">
+{% endblock style %}
+
+{% block content %}
+    <div id="matches">
+        <div class="wider-list">
+            <div class="list">
+                <a href="#">
+                    <div v-for="m in mecze" v-bind:key="m.id" class="match">
+                        <img v-if="m.league === 'LaLiga'" src="photos/hiszpania.jpeg">
+                        <img v-else-if="m.league === 'Bundesliga'" src="photos/niemcy.jpeg">
+                        <img v-else-if="m.league === 'Ligue 1'" src="photos/francja.jpeg">
+                        <img v-else-if="m.league === 'Premier League'" src="photos/anglia.jpeg">
+                        <img v-else-if="m.league === 'Serie A'" src="photos/wlochy.jpeg">
+                        <div class="date">
+                            {% verbatim %}
+                            <span>{{ m.date }}</span>
+                            {% endverbatim %}
+                        </div>
+                        <div class="info">
+                            {% verbatim %}
+                            <span v-if="m.whoWon === 1 || m.whoWon === 0" style="font-weight: bold;">{{ m.team1 }}</span>
+                            <span v-else>{{ m.team1 }}</span>
+                            <span>{{ m.score }}</span>
+                            <span v-if="m.whoWon === 2 || m.whoWon === 0" style="font-weight: bold;">{{ m.team2 }}</span>
+                            <span v-else>{{ m.team2 }}</span>
+                            {% endverbatim %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
