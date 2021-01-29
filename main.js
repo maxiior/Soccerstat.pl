@@ -55,6 +55,7 @@ new Vue({
                     location.href='TOTY.php';
                     break;
                 case 1:
+                    location.href='bestteam.php';
                     break;
                 case 2:
                     this.showAddMatch=true;

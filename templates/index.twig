@@ -8,8 +8,8 @@
     <div id="matches">
         <div class="wider-list">
             <div class="list">
-                <a href="#">
-                    <div v-for="m in mecze" v-bind:key="m.id" class="match">
+                <a href="match.php" v-for="m in mecze" v-bind:key="m.id">
+                    <div class="match">
                         <img v-if="m.league === 'LaLiga'" src="photos/hiszpania.jpeg">
                         <img v-else-if="m.league === 'Bundesliga'" src="photos/niemcy.jpeg">
                         <img v-else-if="m.league === 'Ligue 1'" src="photos/francja.jpeg">
