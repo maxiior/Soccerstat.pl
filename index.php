@@ -18,7 +18,7 @@
     <body>
         <div id="app">
             <div id="header">
-                <div class="top">
+                <div class="container-fluid progress top">
                     <h1>Soccerstat.pl</h1>
                 </div>
                 <div class="bottom-bar">
@@ -31,24 +31,26 @@
                     </div>
                 </div>
                 <div class="options">
-                    <a v-for="o in opt" v-bind:key="o.id" href="#">
-                        <div class="option">
+                    <a v-for="(o, i) in opt" v-bind:key="o.id" href="#">
+                        <button class="option" @click="useOption(i)">
                             <div>{{ o.title }}</div>
-                        </div>
+                        </button>
                     </a>
                 </div>
             </div>
 
             <div id="matchs">
+                <div >
+                </div>
                 <div class="wider-list">
                     <div class="list">
                         <a href="#">
                             <div v-for="m in mecze" v-bind:key="m.id" class="match">
-                                <img v-if="m.league === 'LaLiga'" src="hiszpania.jpeg">
-                                <img v-else-if="m.league === 'Bundesliga'" src="niemcy.jpeg">
-                                <img v-else-if="m.league === 'Ligue 1'" src="francja.jpeg">
-                                <img v-else-if="m.league === 'Premier League'" src="anglia.jpeg">
-                                <img v-else-if="m.league === 'Serie A'" src="wlochy.jpeg">
+                                <img v-if="m.league === 'LaLiga'" src="photos/hiszpania.jpeg">
+                                <img v-else-if="m.league === 'Bundesliga'" src="photos/niemcy.jpeg">
+                                <img v-else-if="m.league === 'Ligue 1'" src="photos/francja.jpeg">
+                                <img v-else-if="m.league === 'Premier League'" src="photos/anglia.jpeg">
+                                <img v-else-if="m.league === 'Serie A'" src="photos/wlochy.jpeg">
                                 <div class="date">
                                     <span>{{ m.date }}</span>
                                 </div>
@@ -75,58 +77,75 @@
                     </div>
                 </div>
             </div>
+
+            <div id="overlay" v-if="showAddMatch">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add match</h5>
+                            <button type="button" class="btn-close" @click="showAddMatch=false"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <form action="#" method="post">
+                                <div class="mb-3">
+                                    <input type="text" name="team1" class="form-control form-control-m" placeholder="Team 1">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="team2" class="form-control form-control-m" placeholder="Team 2">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="score" class="form-control form-control-m" placeholder="Score">
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-success w-100 btn-m">Add match</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="import" v-if="showImport">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Import data</h5>
+                            <button type="button" class="btn-close" @click="showImport=false"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <div class="mb-3">
+                                This function is for import database
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-success w-100 btn-m">Import data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="export" v-if="showExport">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Export data</h5>
+                            <button type="button" class="btn-close" @click="showExport=false"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <div class="mb-3">
+                                This function is for export database
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-success w-100 btn-m">Export data</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <script>
-            new Vue({
-                el: '#app',
-                data: {
-                    ligi: [
-                        {title: 'LaLiga', im: 'hiszpania.jpeg', id: 1},
-                        {title: 'Bundesliga', im: 'niemcy.jpeg', id: 2},
-                        {title: 'Ligue 1', im: 'francja.jpeg', id: 3},
-                        {title: 'Premier League', im: 'anglia.jpeg', id: 4},
-                        {title: 'Serie A', im: 'wlochy.jpeg', id: 5}
-                    ],
-                    opt: [
-                        {title: 'TOTY', link: 'Best.vue', id: 1}, 
-                        {title: 'Best Team', link: 'Best.vue', id: 2}, 
-                        {title: 'Add match', link: 'Best.vue', id: 3}, 
-                        {title: 'Export data', link: 'Best.vue', id: 4}
-                    ],
-                    mecze: [
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '5:0', date: '21.11.2020 21:00', whoWon: 1, id: 1},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 2},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 3},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 4},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 5},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 6},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 7},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 8},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 9},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 10},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 11},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 12},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 13},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 14},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 15},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 16},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 17},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 18},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 19},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 20},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 21},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 22},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 23},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 24},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 25},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 26},
-                        {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 27}
-                    ]
-                }
-            })
-        </script>
-
+        <script type="text/javascript" src="main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
