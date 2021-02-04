@@ -1,11 +1,78 @@
 {% extends "main.twig" %}
 
 {% block style %}
-<link rel="stylesheet" href="./style/TOTY.css">
+<link rel="stylesheet" href="./style/match.css">
+<link rel="stylesheet" href="./style/index.css">
 {% endblock style %}
 
 {% block content %}
-<div class="board container-fluid bg-light">
+<main class="container-fluid bg-light">
+    <div class="board">
+        <section class="top-bar">
+            <div class="league">
+                <img src="photos/hiszpania.jpeg">
+                <div class="nameOf" name="nameOf">HISZPANIA: LALIGA</div>
+            </div>
+            <div class="date" name="date">
+                04.02.2021 14:05
+            </div>
+        </section>
 
-</div>
+        <section class="middle">
+            <div class="arms1">
+                <img src="./photos/La Liga/Levante.jpg" alt="team">
+                <div class="team1" name="nameOfT1">Levante</div>
+            </div>
+            <div class="score">
+                1 - 0
+            </div>
+            <div class="arms2">
+                <img src="./photos/La Liga/Atletico Madrid.jpg" alt="team">
+                <div class="team2" name="nameOfT2">Atletico Madrid</div>
+            </div>
+        </section>
+
+        <div class="statistics-bar">
+            <div class="overlap">
+                Statistics
+            </div>
+        </div>
+        <section class="statistics">
+            <div style="width: 80%;">
+                <div v-for="s in statistics" v-bind:key="s.id" class="single-stat">
+                    <div class="stats">
+                        {% verbatim %}
+                        <div>{{ s.proc1 }}</div>
+                        <div class="statid">{{ s.name }}</div>
+                        <div>{{ s.proc2 }}</div>
+                        {% endverbatim %}
+                    </div>
+                    <div class="belt1">
+                        <div class="belt2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="squads-bar">
+            <div class="overlap">
+                Squads
+            </div>
+        </div>
+        <section class="squads">
+            <div class="wider-list">
+                <div class="list">
+                    <div v-for="s in squad" v-bind:key="s.id">
+                        <div class="line">
+                            {% verbatim %}
+                            <div>{{ s.name1 }}</div>
+                            <div>{{ s.name2 }}</div>
+                            {% endverbatim %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
 {% endblock content %}

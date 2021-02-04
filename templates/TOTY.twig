@@ -13,8 +13,7 @@
                 <div class="formation">4-3-3</div>
 
                 <div v-for="p in players" :class="p.position" v-bind:key="p.id">
-                    <div v-for="pr in p.precise" class="player" :class="">
-                        {{pr}}
+                    <div  v-for="(pr,i) in p.precise" :key="i" class="player" :class="pr">
                         <div class="left">
                             <div class="arms">
 

@@ -1,0 +1,159 @@
+main
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.board
+{
+    width: 80%;
+    min-width: 940px;
+    background-color: white;
+}
+
+.top-bar
+{
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    background-color: #ddd;
+}
+
+.league
+{
+    display: flex;
+    align-items: center;
+}
+
+.nameOf
+{
+    color: #191919;
+    margin-bottom: -2px;
+    margin-left: 10px;
+}
+
+.arms1, .arms2, .arms1 img, .arms2 img
+{
+    width: 120px;
+}
+
+.middle
+{
+    padding: 50px 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.score
+{
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.team1, .team2
+{
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.statistics-bar, .squads-bar
+{
+    background-color: #ddd;
+    width: 100%;
+    height: 40px;
+    border-bottom: 5px solid #275700;
+}
+
+.squads-bar
+{
+    margin-top: 44px;
+}
+
+.statistics-bar > .overlap, .squads-bar > .overlap
+{
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 100%;
+    width: 100px;
+    background-color: #275700;
+}
+
+.statistics, .squads
+{
+    display: flex;
+    justify-content: center;
+}
+
+.single-stat
+{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.statid
+{
+    text-align: center;
+}
+
+.belt1
+{
+    position: relative;
+    background-color: #49a300;
+    width: 100%;
+    height: 10px;
+}
+
+.belt2
+{
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #343434;
+    width: 60%;
+    height: 10px;
+}
+
+.stats
+{
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wider-list
+{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    background-color: white;
+}
+
+.list
+{
+    padding: 20px 0;
+    width: 90%;
+    background-color: white;
+}
+
+.line
+{
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 25px;
+    border-bottom: 1px solid #ddd;
+    color: #777;
+}
