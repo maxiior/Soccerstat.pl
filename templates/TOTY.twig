@@ -1,11 +1,35 @@
 {% extends "main.twig" %}
 
 {% block style %}
-<link rel="stylesheet" href="./TOTY.css">
+<link rel="stylesheet" href="./style/TOTY.css">
 {% endblock style %}
 
 {% block content %}
-<div class="board container-fluid bg-light">
+<main>
+    <div class="board">
+        <div class="center">
+            <header class="toty">Team Of The Year</header>
+            <section class="players">
+                <div class="formation">4-3-3</div>
 
-</div>
+                <div v-for="p in players" :class="p.position" v-bind:key="p.id">
+                    <div v-for="pr in p.precise" class="player" :class="">
+                        {{pr}}
+                        <div class="left">
+                            <div class="arms">
+
+                            </div>
+                            <div class="rate">
+                                
+                            </div>
+                        </div>
+                        <div class="right">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
 {% endblock content %}

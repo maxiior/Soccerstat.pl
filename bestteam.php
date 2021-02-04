@@ -6,6 +6,6 @@ $twig = new \Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-echo $twig->render('TOTY.twig');
+echo $twig->render('bestteam.twig');
 
 ?>

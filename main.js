@@ -44,6 +44,15 @@ new Vue({
             {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 26},
             {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 27}
         ],
+        players: [
+            {position:'N', precise: ['player-N'], p: 1},
+            {position:'S', precise: ['player-LS', 'player-PS'], p: 2},
+            {position:'P', precise: ['player-SPO'], p: 3},
+            {position:'BP', precise: ['player-LP', 'player-PP'], p: 4},
+            {position:'BO', precise: ['player-LO', 'player-PO'], p: 5},
+            {position:'SO', precise: ['player-SO', 'player-SO'], p: 6},
+            {position:'BR', precise: ['player-BR'], p: 7},
+        ],
         showAddMatch: false,
         showImport: false,
         showExport: false

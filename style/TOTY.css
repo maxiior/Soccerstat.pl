@@ -1,0 +1,112 @@
+main
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.board
+{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    background-color: white;
+}
+
+.center
+{
+    width: 90%;
+}
+
+.toty
+{
+    margin-top: 10px;
+    font-size: 30px;
+    border-bottom: 1px solid #ddd;
+    line-height: 40px;
+}
+
+.players
+{
+    background-color: #d5ffb3;
+    margin: 30px 0;
+    width: 100%;
+    padding: 45px 0;
+    position: relative;
+}
+
+.formation
+{
+    left: 20px;
+    top: 20px;
+    position: absolute;
+    font-size: 35px;
+    margin-left: 20px;
+}
+
+.player
+{
+    background-color: white;
+    width: 250px;
+    height: 150px;
+    padding: 10px;
+}
+
+.left
+{
+    width: 80px;
+    height: 130px;
+    float: left;
+}
+
+.arms
+{
+    height: 80px;
+    width: 80px;
+    background-color: blue;
+}
+
+.rate
+{
+    height: 50px;
+    width: 80px;
+    background-color: green;
+}
+
+.right
+{
+    float: left;
+    height: 130px;
+    width: 150px;
+    background-color: red;
+}
+
+.N, .P, .BR
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.player-N
+{
+
+}
+
+.S, .BP, .SO
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-LS
+{
+    margin-left: 200px;
+}
+
+.BO
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
