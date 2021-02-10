@@ -1,11 +1,23 @@
 {% extends "main.twig" %}
 
 {% block style %}
-<link rel="stylesheet" href="./style/TOTY.css">
+<link rel="stylesheet" href="./style/bestteam.css">
 {% endblock style %}
 
 {% block content %}
-<div class="board container-fluid bg-light">
-
-</div>
+<main>
+    <div class="board">
+        <div class="center">
+            <header class="bst">Best Single Team</header>
+            <section class="players">
+                <img class="arms" src="photos/La Liga/Atletico Madrid.jpg">
+                <div class="info-box">
+                    {% verbatim %}
+                    <div v-for="i in info" v-bind:key="i.id" class="info">{{i.name}} <span class="value">{{i.value}}</span></div>
+                    {% endverbatim %}
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
 {% endblock content %}

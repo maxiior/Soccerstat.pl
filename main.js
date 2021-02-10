@@ -72,6 +72,15 @@ new Vue({
             {name1: 'Ansu Fati', name2: 'Hazard', id: 10},
             {name1: 'Griezmann', name2: 'Vinicius', id: 11},
         ],
+        info: [
+            {name: 'TEAM NAME:', value: 'Atletico Madryt', id: 1},
+            {name: 'AVERAGE GOALS SCORED:', value: '3', id: 2},
+            {name: 'AVERAGE GOALS CONCEDED:', value: '1', id: 3},
+            {name: 'AVERAGE POSSESSION:', value: '61%', id: 4},
+            {name: 'AVERAGE AMOUNT OF SHOOTS:', value: '13', id: 5},
+            {name: 'AVERAGE AMOUNT OF PASSES:', value: '644', id: 6},
+            {name: 'AVERAGE AMOUNT OF FAULS:', value: '3', id: 7},
+        ],
         showAddMatch: false,
         showImport: false,
         showExport: false

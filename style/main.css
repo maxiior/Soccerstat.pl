@@ -102,6 +102,8 @@
     padding: 5px;
     margin-right: 8px;
     border-radius: 10px;
+    text-decoration: none;
+    color: black;
 }
 .all:hover
 {
