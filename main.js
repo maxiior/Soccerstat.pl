@@ -1,4 +1,4 @@
-new Vue({
+const vueApp = new Vue({
     el: '#app',
     data: {
         ligi: [
@@ -83,7 +83,10 @@ new Vue({
         ],
         showAddMatch: false,
         showImport: false,
-        showExport: false
+        showExport: false,
+        showInfo: false,
+        infoVal: ''
+
     },
     methods: {
         useOption: function(i){

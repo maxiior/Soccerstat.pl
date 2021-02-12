@@ -147,7 +147,7 @@
 }
 
 
-#overlay, #import, #export
+#overlay, #import, #export, #info
 {
     position: fixed;
     top: 0;
