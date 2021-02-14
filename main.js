@@ -87,7 +87,7 @@ const vueApp = new Vue({
         showExport: false,
         showInfo: false,
         infoVal: '',
-        armsBest: ''
+        armsBest: 'photos/La Liga/Atletico Madrid.jpg'
 
     },
     methods: {

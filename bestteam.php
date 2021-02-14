@@ -29,7 +29,7 @@ else
     echo 'vueApp.info[5].value='.$averageAmountOfPasses.';';
     echo 'vueApp.info[6].value='.$averageAmountOfFauls.';';
     echo 'vueApp.info[7].value='.$rating.';';
-    echo 'vueApp.armsBest="photos/La Liga/Atletico Madrid.jpg";';
+    echo 'vueApp.armsBest='.$arms.';';
     echo '</script>';
     $connection->close();
 }
