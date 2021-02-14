@@ -13,13 +13,15 @@
                 <div class="formation">4-3-3</div>
 
                 <div v-for="p in players" :class="p.position" v-bind:key="p.id">
-                    <div  v-for="(pr,i) in p.precise" :key="i" class="player" :class="pr">
+                    <div  v-for="(pr,i) in p.precise" :key="i" class="player" :class="pr.position">
                         <div class="left">
                             <div class="arms">
-
+                                <img class="arms" :src="pr.arms">
                             </div>
                             <div class="rate">
-                                
+                                {% verbatim %}
+                                {{ pr.rate }}
+                                {% endverbatim %}
                             </div>
                         </div>
                         <div class="right">

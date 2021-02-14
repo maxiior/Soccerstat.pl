@@ -10,7 +10,7 @@
         <div class="center">
             <header class="bst">Best Single Team</header>
             <section class="players">
-                <img class="arms" src="photos/La Liga/Atletico Madrid.jpg">
+                <img class="arms" :src="armsBest">
                 <div class="info-box">
                     {% verbatim %}
                     <div v-for="i in info" v-bind:key="i.id" class="info">{{i.name}} <span class="value">{{i.value}}</span></div>

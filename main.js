@@ -45,13 +45,13 @@ const vueApp = new Vue({
             {league: 'LaLiga', team1: 'FC Barcelona', team2: 'Real Madryt', score: '3:2', date: '23.11.2020 21:00', whoWon: 1, id: 27}
         ],
         players: [
-            {position:'N', precise: ['player-N'], name: '', lastname: '', p: 1},
-            {position:'S', precise: ['player-LS', 'player-PS'], name: '', lastname: '', p: 2},
-            {position:'P', precise: ['player-SPO'], name: '', lastname: '', p: 3},
-            {position:'BP', precise: ['player-LP', 'player-PP'], name: '', lastname: '', p: 4},
-            {position:'BO', precise: ['player-LO', 'player-PO'], name: '', lastname: '', p: 5},
-            {position:'SO', precise: ['player-LSO', 'player-PSO'], name: '', lastname: '', p: 6},
-            {position:'BR', precise: ['player-BR'], name: '', lastname: '', p: 7}
+            {position:'N', precise: [{position: 'player-N', name: '', lastname: '', rate: '', arms: ''}], p: 1},
+            {position:'S', precise: [{position: 'player-LS', name: '', lastname: '', rate: '', arms: ''}, {position: 'player-PS', name: '', lastname: '', rate: '', arms: ''}], p: 2},
+            {position:'P', precise: [{position: 'player-SPO', name: '', lastname: '', rate: '', arms: ''}], p: 3},
+            {position:'BP', precise: [{position: 'player-LP', name: '', lastname: '', rate: '', arms: ''}, {position: 'player-PP', name: '', lastname: '', rate: '', arms: ''}], p: 4},
+            {position:'BO', precise: [{position: 'player-LO', name: '', lastname: '', rate: '', arms: ''}, {position: 'player-PO', name: '', lastname: '', rate: '', arms: ''}], p: 5},
+            {position:'SO', precise: [{position: 'player-LSO', name: '', lastname: '', rate: '', arms: ''}, {position: 'player-PSO', name: '', lastname: '', rate: '', arms: ''}], p: 6},
+            {position:'BR', precise: [{position: 'player-BR', name: '', lastname: '', rate: '', arms: ''}], p: 7}
         ],
         statistics: [
             {name: 'Possession', proc1: '60%', proc2: '40%', id: 1},
@@ -80,12 +80,14 @@ const vueApp = new Vue({
             {name: 'AVERAGE AMOUNT OF SHOOTS:', value: '13', id: 5},
             {name: 'AVERAGE AMOUNT OF PASSES:', value: '644', id: 6},
             {name: 'AVERAGE AMOUNT OF FAULS:', value: '3', id: 7},
+            {name: 'RATING:', value: '8.9', id: 8}
         ],
         showAddMatch: false,
         showImport: false,
         showExport: false,
         showInfo: false,
-        infoVal: ''
+        infoVal: '',
+        armsBest: ''
 
     },
     methods: {
