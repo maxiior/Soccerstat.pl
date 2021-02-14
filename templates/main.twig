@@ -192,26 +192,28 @@
                                 With this option you can import the database content in the selected format:
                             </div>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  .json
-                                </label>
+                            <form action="import.php" method="post" enctype="multipart/form-data">
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                  <label class="form-check-label" for="flexRadioDefault1">
+                                    .json
+                                  </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                  .csv
-                                </label>
-                            </div>
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                  <label class="form-check-label" for="flexRadioDefault2">
+                                    .csv
+                                  </label>
+                              </div>
 
-                            <div class="input-group mb-3 mt-3">
-                                <input type="file" class="form-control" id="inputGroupFile01">
-                            </div>
+                              <div class="input-group mb-3 mt-3">
+                                  <input type="file" class="form-control" id="inputGroupFile01" name="csvFile">
+                              </div>
 
-                            <div class="mb-3 mt-3">
-                                <button class="btn btn-success w-100 btn-m">Import data</button>
-                            </div>
+                              <div class="mb-3 mt-3">
+                                  <input class="btn btn-success w-100 btn-m" value="Import data" type="submit">
+                              </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -230,13 +232,13 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exportJson" id="flexRadioDefault1" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                   .json
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exportCSV" id="flexRadioDefault2">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                   .csv
                                 </label>
