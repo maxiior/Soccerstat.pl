@@ -11,24 +11,34 @@
         <section class="top-bar">
             <div class="league">
                 <img src="photos/hiszpania.jpeg">
-                <div class="nameOf" name="nameOf">HISZPANIA: LALIGA</div>
+                {% verbatim %}
+                <div class="nameOf" name="nameOf">HISZPANIA: {{matchLeague}}</div>
+                {% endverbatim %}
             </div>
             <div class="date" name="date">
-                04.02.2021 14:05
+                {% verbatim %}
+                {{matchData}}
+                {% endverbatim %}
             </div>
         </section>
 
         <section class="middle">
             <div class="arms1">
-                <img src="./photos/La Liga/Levante.jpg" alt="team">
-                <div class="team1" name="nameOfT1">Levante</div>
+                <img :src="arms1src" alt="team">
+                {% verbatim %}
+                <div class="team1" name="nameOfT1">{{matchTeam1Name}}</div>
+                {% endverbatim %}
             </div>
             <div class="score">
-                1 - 0
+                {% verbatim %}
+                {{matchTeam1}} - {{matchTeam2}}
+                {% endverbatim %}
             </div>
             <div class="arms2">
-                <img src="./photos/La Liga/Atletico Madrid.jpg" alt="team">
-                <div class="team2" name="nameOfT2">Atletico Madrid</div>
+                <img :src="arms2src" alt="team">
+                {% verbatim %}
+                <div class="team2" name="nameOfT2">{{matchTeam2Name}}</div>
+                {% endverbatim %}
             </div>
         </section>
 

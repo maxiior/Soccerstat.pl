@@ -87,7 +87,16 @@ const vueApp = new Vue({
         showExport: false,
         showInfo: false,
         infoVal: '',
-        armsBest: 'photos/La Liga/Atletico Madrid.jpg'
+        armsBest: 'photos/La Liga/Atletico Madrid.jpg',
+        matchData: '04.02.2021 14:05',
+        matchLeague: 'LALIGA',
+        matchTeam1: '1',
+        matchTeam2: '0',
+        matchTeam1Name: 'Levante',
+        matchTeam2Name: 'Atletico Madrid',
+        arms1src: './photos/La Liga/Levante.jpg',
+        arms2src: './photos/La Liga/Atletico Madrid.jpg'
+
 
     },
     methods: {
