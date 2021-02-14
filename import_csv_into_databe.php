@@ -1,6 +1,5 @@
 <?php
     use Phppot\DataSource;
-
     require_once 'DataSource.php';
 
     function import_csv_into_databe($fileName, $size)

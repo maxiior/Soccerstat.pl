@@ -23,7 +23,7 @@ else if(isset($_SESSION["info"]) && $_SESSION["info"] == 0)
 {
     echo '<script type="text/JavaScript">';
     echo 'vueApp.showInfo=true;';
-    echo 'vueApp.infoVal="The file was entered successfully.";';
+    echo 'vueApp.infoVal="The data was entered successfully.";';
     echo '</script>';
     unset($_SESSION["info"]);
 }
@@ -32,6 +32,14 @@ else if(isset($_SESSION["info"]) && $_SESSION["info"] == 1)
     echo '<script type="text/JavaScript">';
     echo 'vueApp.showInfo=true;';
     echo 'vueApp.infoVal="Database connection error.";';
+    echo '</script>';
+    unset($_SESSION["info"]);
+}
+else if(isset($_SESSION["info"]) && $_SESSION["info"] == 2)
+{
+    echo '<script type="text/JavaScript">';
+    echo 'vueApp.showInfo=true;';
+    echo 'vueApp.infoVal="The file was entered successfully.";';
     echo '</script>';
     unset($_SESSION["info"]);
 }
