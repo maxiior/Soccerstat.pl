@@ -12,10 +12,15 @@ $twig = new \Twig\Environment($loader, [
 
 echo $twig->render('index.twig');
 
-
-
+//SELECT g.date,g.team1, g.team2, g.score1, g.score2,c.country FROM games g INNER JOIN clubs c ON c.id = g.club_id WHERE c.country='Spain'
+//SELECT g.date,g.team1, g.team2, g.score1, g.score2,c.country FROM games g INNER JOIN clubs c ON c.id = g.club_id
 //TUTAJ
 $connection = @new mysqli($host, $db_user, $db_password, $db_name);
+$sql = "SELECT date,team1, team2, score1, score2,id FROM games";
+$result = $connection->query($sql);
+
+
+
 
 if($connection->connect_errno!=0)
 {
@@ -26,13 +31,15 @@ if($connection->connect_errno!=0)
 }
 else
 {
+	
     echo '<script type="text/JavaScript">';
     echo 'vueApp.mecze=[];';
     echo '</script>';
     for($i=1; $i<=27; $i++)
     {
+		$row = $result->fetch_array(MYSQLI_BOTH);
         echo '<script type="text/JavaScript">';
-        echo 'vueApp.mecze.push({league: "'.$league.'", team1: "'.$team1.'", team2: "'.$team2.'", score: "'.$score.'", date: "'.$date.'", whoWon: '.$who.', idInDB: '.$idInDB.', id: '.$i.'});';
+        echo 'vueApp.mecze.push({league: "LaLiga", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: "1", idInDB: "'.$row[5].'", id: '.$i.'});';
         echo '</script>';
     }
     $connection->close();
