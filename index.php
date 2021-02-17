@@ -38,11 +38,15 @@ else
     for($i=1; $i<=27; $i++)
     {
 		$row = $result->fetch_array(MYSQLI_BOTH);		
-		if($row[3] > $row[4] and $row[3] != $row[4]) 
+		if($row[3] == $row[4]) 
+		{
+			$whoWon=-1;
+		}
+		else if($row[3] > $row[4]) 
 		{
 			$whoWon=1;
 		}
-		else
+		else if($row[3] < $row[4]) 
 		{
 			$whoWon=2;
 		}
