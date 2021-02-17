@@ -16,7 +16,7 @@ echo $twig->render('index.twig');
 //SELECT g.date,g.team1, g.team2, g.score1, g.score2,c.country FROM games g INNER JOIN clubs c ON c.id = g.club_id
 //TUTAJ
 $connection = @new mysqli($host, $db_user, $db_password, $db_name);
-$sql = "SELECT date,team1, team2, score1, score2,id FROM games";
+$sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id, c.country FROM games AS g, clubs AS c WHERE c.id = g.club_id LIMIT 27";
 $result = $connection->query($sql);
 
 
@@ -37,9 +37,37 @@ else
     echo '</script>';
     for($i=1; $i<=27; $i++)
     {
-		$row = $result->fetch_array(MYSQLI_BOTH);
+		$row = $result->fetch_array(MYSQLI_BOTH);		
+		if($row[3] > $row[4] and $row[3] != $row[4]) 
+		{
+			$whoWon=1;
+		}
+		else
+		{
+			$whoWon=2;
+		}
         echo '<script type="text/JavaScript">';
-        echo 'vueApp.mecze.push({league: "LaLiga", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: "1", idInDB: "'.$row[5].'", id: '.$i.'});';
+		if($row[6] == "England")
+		{
+			 echo 'vueApp.mecze.push({league: "Premier League", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: '.$whoWon.', idInDB: "'.$row[5].'", id: '.$i.'});';
+		}
+		else if($row[6] == "Spain")
+		{
+			 echo 'vueApp.mecze.push({league: "LaLiga", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: '.$whoWon.', idInDB: "'.$row[5].'", id: '.$i.'});';
+		}
+		else if($row[6]== "France")
+		{
+			echo 'vueApp.mecze.push({league: "Ligue 1", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: '.$whoWon.', idInDB: "'.$row[5].'", id: '.$i.'});';
+		}
+		else if($row[6]== "Germany")
+		{
+			echo 'vueApp.mecze.push({league: "Bundesliga", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: '.$whoWon.', idInDB: "'.$row[5].'", id: '.$i.'});';
+		}
+		else if($row[6]== "Italy")
+		{
+			echo 'vueApp.mecze.push({league: "Serie A", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: '.$whoWon.', idInDB: "'.$row[5].'", id: '.$i.'});';
+		}
+       
         echo '</script>';
     }
     $connection->close();
