@@ -2,8 +2,7 @@
 
     if(isset($_POST['flexRadioDefault']) && $_POST['flexRadioDefault']=='json')
     {
-        require("db_connection.php");
-        $conn = $db->getConnection();
+        $con = mysqli_connect($host,$db_user,$db_password, $db_name) or die("Error " . mysqli_error($con));
         
         // get Matches
         $query = "SELECT * FROM matches";
@@ -28,8 +27,8 @@
     }
     else
     {
-        require("db_connection.php");
-        $conn = $db->getConnection();
+        $con = mysqli_connect($host,$db_user,$db_password, $db_name) or die("Error " . mysqli_error($con));
+        
 
         // get Matches
         $query = "SELECT * FROM matches";
