@@ -8,8 +8,9 @@
     <div id="matches">
         <div class="wider-list">
             <div class="list">
-                <a href="match.php" v-for="m in mecze" v-bind:key="m.id">
-                    <div class="match">
+                <form action="match.php" method="post" v-for="m in mecze" v-bind:key="m.id">
+                    <input name="whichMatch" type="hidden" :value="m.idInDB">
+                    <button type="submit" class="match">
                         <img v-if="m.league === 'LaLiga'" src="photos/hiszpania.jpeg">
                         <img v-else-if="m.league === 'Bundesliga'" src="photos/niemcy.jpeg">
                         <img v-else-if="m.league === 'Ligue 1'" src="photos/francja.jpeg">
@@ -29,8 +30,8 @@
                             <span v-else>{{ m.team2 }}</span>
                             {% endverbatim %}
                         </div>
-                    </div>
-                </a>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

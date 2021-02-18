@@ -198,12 +198,9 @@ else
             echo '</script>';
         }
     }
-
-    $connection->close();
 }
+$connection->close();
 /////////////////////////////////
-
-
 
 if(isset($_SESSION["info"]) && $_SESSION["info"] == -1)
 {

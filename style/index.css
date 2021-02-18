@@ -51,7 +51,8 @@
 {
     padding: 10px;
 }
-.list a
+.list button
 {
-    text-decoration: none;
+    background-color: white;
+    border: none;
 }
