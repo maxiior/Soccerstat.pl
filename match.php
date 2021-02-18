@@ -59,19 +59,21 @@ if(isset($_POST['whichMatch']))
         }
 
         echo '<script type="text/JavaScript">';
-        echo 'vueApp.matchData = '.$matchData.'';
-        echo 'vueApp.matchLeague = '.$matchLeague.'';
-        echo 'vueApp.matchTeam1 = '.$matchTeam1.'';
-        echo 'vueApp.matchTeam2 = '.$matchTeam2.'';
-        echo 'vueApp.matchTeam1Name = '.$matchTeam1Name.'';
-        echo 'vueApp.matchTeam2Name = '.$matchTeam2Name.'';
-        echo 'vueApp.arms1src = '.$arms1src.'';
-        echo 'vueApp.arms2src = '.$arms2src.'';
+        echo 'vueApp.matchData = "'.$matchData.'"';
+        echo 'vueApp.matchLeague = "'.$matchLeague.'"';
+        echo 'vueApp.matchTeam1 = "'.$matchTeam1.'"';
+        echo 'vueApp.matchTeam2 = "'.$matchTeam2.'"';
+        echo 'vueApp.matchTeam1Name = "'.$matchTeam1Name.'"';
+        echo 'vueApp.matchTeam2Name = "'.$matchTeam2Name.'"';
+        echo 'vueApp.arms1src = "'.$arms1src.'"';
+        echo 'vueApp.arms2src = "'.$arms2src.'"';
         echo '</script>';
 
         $connection->close();
     }
 }
 /////////////////////////////////
+
+
 
 ?>
