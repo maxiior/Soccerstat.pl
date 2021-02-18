@@ -1,5 +1,6 @@
 <?php
 require_once './vendor/autoload.php';
+require_once 'connect.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('./templates');
 $twig = new \Twig\Environment($loader, [
@@ -27,8 +28,9 @@ else
     if($result = $connection->query($sql))
     {
         $row = $result->fetch_array(MYSQLI_BOTH);
+		echo($row[0]);
         echo '<script type="text/javascript">';
-        echo 'vueApp.info[0].value="'.$row[7].'"';
+        echo 'vueApp.info[0].value="'.$row[7].'";';
         echo 'vueApp.info[1].value="'.$row[1].'";';
         echo 'vueApp.info[2].value="'.$row[2].'";';
         echo 'vueApp.info[3].value="'.$row[3].'";';
@@ -36,7 +38,7 @@ else
         echo 'vueApp.info[5].value="'.$row[5].'";';
         echo 'vueApp.info[6].value="'.$row[6].'";';
         echo 'vueApp.info[7].value="'.$row[0].'";';
-        echo 'vueApp.armsBest='.$arms.';';
+        echo 'vueApp.armsBest="";';
         echo '</script>';
     }
     else
