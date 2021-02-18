@@ -25,15 +25,19 @@ else
     FROM Ocena_zespołu_w_sezonie INNER JOIN ocena_zespołu_w_meczu ON ocena_zespołu_w_sezonie.druzyna_id = ocena_zespołu_w_meczu.team_id 
     INNER JOIN clubs ON ocena_zespołu_w_sezonie.druzyna_id = clubs.id";
 
+    $sql2 = "SELECT c.country FROM Ocena_zespołu_w_sezonie, clubs AS c WHERE ocena_zespołu_w_sezonie.druzyna_id = clubs.id";
+
     if($result = $connection->query($sql))
     {
         $row = $result->fetch_array(MYSQLI_BOTH);
 		
-        //tutaj zamiast row[6] trzeba dać zmienną przechowującą kraj, w którym gra dany klub
-        if($row[6] == "England") { $league='Premier League'; }
-        elseif($row[6] == "Spain") { $league='La Liga'; }
-        elseif($row[6] == "France") { $league='Ligue 1'; }
-        elseif($row[6] == "Germany") { $league='Bundesliga'; }
+        $result2 = $connection->query($sql2);
+        $row2 = $result2->fetch_array(MYSQLI_BOTH);
+
+        if($row2[0] == "England") { $league='Premier League'; }
+        elseif($row2[0] == "Spain") { $league='La Liga'; }
+        elseif($row2[0] == "France") { $league='Ligue 1'; }
+        elseif($row2[0] == "Germany") { $league='Bundesliga'; }
         else { $league='Serie A'; }
 
         $path = './photos/'.$league.'/'.$row[7].'.jpg'; 
