@@ -9,7 +9,20 @@ $twig = new \Twig\Environment($loader, [
 echo $twig->render('match.twig');
 
 //TUTAJ
-$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+$connection = @new mysqli("localhost", "root", "", "pilka");
+$sql1 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id=122";
+$result1 = $connection->query($sql1);
+
+$sql2 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id=125";
+$result2 = $connection->query($sql2);
+
+//SELECT possession1,possession2,shoots1,shoots2,apasses1,apasses2,fauls1,fauls2 FROM games WHERE club_id=122
+$sql3 = "SELECT possession1,possession2 FROM games WHERE club_id=122";
+$result3 = $connection->query($sql3);
+$stats = $result3->fetch_array(MYSQLI_BOTH);
+
+$stat_name = array("Possession", "Shoots", "Passes", "Fauls");
+
 
 if($connection->connect_errno!=0)
 {
@@ -20,20 +33,23 @@ if($connection->connect_errno!=0)
 }
 else
 {
+
     echo '<script type="text/JavaScript">';
     echo 'vueApp.squad=[];';
     echo 'vueApp.statistics=[];';
     echo '</script>';
     for($i=0; $i<11; $i++)
     {
+		$team1 = $result1->fetch_array(MYSQLI_BOTH);
+		$team2 = $result2->fetch_array(MYSQLI_BOTH);
         echo '<script type="text/JavaScript">';
-        echo 'vueApp.squad.push({name1: "'.$name1.'", name2: "'.$name2.'"});';
+        echo 'vueApp.squad.push({name1: "'.$team1[0].' '.$team1[1].'", name2:"'.$team2[0].' '.$team2[1].'"});';
         echo '</script>';
     }
     for($i=1; $i<=4; $i++)
     {
         echo '<script type="text/JavaScript">';
-        echo 'vueApp.squad.push({name: "'.$name.'", name2: "'.$proc1.'", name2: "'.$proc2.'", name2: "'.$i.'"});';
+		echo 'vueApp.statistics.push({name: "'.$stat_name[$i-1].'", proc1: "'.$stats[0].'", proc2: "'.$stats[1].'", id: "'.$i.'"});';
         echo '</script>';
     }
 

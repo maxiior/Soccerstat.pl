@@ -33,7 +33,7 @@
         exit();
     }
 
-    $connection = @new mysqli($host, $db_user, $db_password, $db_name);
+    $connection = @new mysqli('localhost', 'root', '', 'pilka');
 
     if($connection->connect_errno!=0)
     {
@@ -46,7 +46,7 @@
         $team1 = htmlentities($_POST['team1'], ENT_QUOTES, "UTF-8");
         $team2 =htmlentities($_POST['team2'], ENT_QUOTES, "UTF-8");
         $score1 =htmlentities($_POST['score1'], ENT_QUOTES, "UTF-8");
-        $socre2 =htmlentities($_POST['score2'], ENT_QUOTES, "UTF-8");
+        $score2 =htmlentities($_POST['score2'], ENT_QUOTES, "UTF-8");
         $possession1 =htmlentities($_POST['possession1'], ENT_QUOTES, "UTF-8");
         $possession2 =htmlentities($_POST['possession2'], ENT_QUOTES, "UTF-8");
         $apasses1 =htmlentities($_POST['apasses1'], ENT_QUOTES, "UTF-8");
@@ -67,9 +67,18 @@
         $corner2 =htmlentities($_POST['corner2'], ENT_QUOTES, "UTF-8");
         $fauls1 =htmlentities($_POST['fauls1'], ENT_QUOTES, "UTF-8");
         $fauls2 =htmlentities($_POST['fauls2'], ENT_QUOTES, "UTF-8");
+		
 
+$sq= "SELECT c.id FROM clubs as c WHERE c.name = '$team1'";
+ $result = $connection->query($sq) or die($connection->error);
+$row = mysqli_fetch_array($result);
         //w cudzyslowie insert sql
-        if(@$connection->query(sprintf("")))
+		 $sql = "INSERT INTO games (club_id, team1, team2, score1, score2, possession1, possession2, apasses1, apasses2,
+	shoots1, shoots2, ashoots1, ashoots2, yellow1, yellow2, red1, red2, free1, free2, penalty1, penalty2,
+	corner1, corner2, fauls1, fauls2)
+	VALUES ($row[0], '$team1', '$team2', $score1,$score2,$possession1,$possession2,$apasses1,$apasses2,$shoots1,$shoots2,$ashoots1,$ashoots2,$yellow1,$yellow2,$red1,$red2,$free1,$free2,$penalty1,$penalty2,$corner1,$corner2,$fauls1,$fauls2)";
+
+        if(@$connection->query($sql)=== TRUE)
         {
             $_SESSION["info"] = 0;
             header('Location: index.php');
