@@ -35,25 +35,10 @@ else
     echo '</script>';
     for($i=1; $i<=27; $i++)
     {
-<<<<<<< HEAD
-		$row = $result->fetch_array(MYSQLI_BOTH);		
-		if($row[3] == $row[4]) 
-		{
-			$whoWon=-1;
-		}
-		else if($row[3] > $row[4]) 
-		{
-			$whoWon=1;
-		}
-		else if($row[3] < $row[4]) 
-		{
-			$whoWon=2;
-		}
-=======
-		$row = $result->fetch_array(MYSQLI_BOTH);	
+		$row = $result->fetch_array(MYSQLI_BOTH);
 
 		if($row[3] > $row[4]) { $whoWon=1; }
-        elseif($row[3] != $row[4]) { $whoWon=0; }
+        elseif($row[3] == $row[4]) { $whoWon=0; }
 		else { $whoWon=2; }
 
         if($row[6] == "England") { $league='Premier League'; }
@@ -62,7 +47,6 @@ else
         elseif($row[6] == "Germany") { $league='Bundesliga'; }
         else { $league='Serie A'; }
 
->>>>>>> fa3f849f0772f68e68d9435faaf997355321bb62
         echo '<script type="text/JavaScript">';
         echo 'vueApp.mecze.push({league: "'.$league.'", team1: "'.$row[1].'", team2: "'.$row[2].'", score: "'.$row[3].'-'.$row[4].'", date: "'.$row[0].'", whoWon: '.$whoWon.', idInDB: "'.$row[5].'", id: '.$i.'});';
         echo '</script>';
