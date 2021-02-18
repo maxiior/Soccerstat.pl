@@ -23,12 +23,15 @@
                     <a href="index.php" class="all">
                         <div>ALL</div>
                     </a>
-                    <div v-for="l in ligi" v-bind:key="l.id" class="liga">
+                    <form v-for="l in ligi" v-bind:key="l.id" class="liga" action="index.php" method="post">
+                      <input name="league" type="hidden" :value="l.title">
+                      <button type="submit" class="ligain">
                         <img :src="l.im">
                         {% verbatim %}
                         <div>{{ l.title }}</div>
                         {% endverbatim %}
-                    </div>
+                      </button>
+                    </form>
                 </div>
                 <div class="options">
                     <a v-for="(o, i) in opt" v-bind:key="o.id" href="#">
