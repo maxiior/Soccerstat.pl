@@ -13,13 +13,18 @@ echo $twig->render('match.twig');
 
 if(isset($_POST['whichMatch']))
 {
-    $whichMatch = isset($_POST['whichMatch']);
+    $whichMatch = $_POST['whichMatch'];
 
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
-    $sql1 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id=122";
+	
+	$sql = "SELECT g.club_id, g.club2_id FROM games as g WHERE g.id=\"$whichMatch\"";
+	$result = $connection->query($sql);
+	$results = $result->fetch_array(MYSQLI_BOTH);
+	
+	$sql1 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id= \"$results[0]\"";
     $result1 = $connection->query($sql1);
 
-    $sql2 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id=125";
+    $sql2 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id= \"$results[1]\"";
     $result2 = $connection->query($sql2);
 
     //SELECT possession1,possession2,shoots1,shoots2,apasses1,apasses2,fauls1,fauls2 FROM games WHERE club_id=122
@@ -58,15 +63,28 @@ if(isset($_POST['whichMatch']))
             echo '</script>';
         }
 
+		$sql = "SELECT g.date,g.score1,g.score2,g.team1,g.team2, c.country FROM games as g, clubs as c WHERE G.club_id= C.id";
+	$result = $connection->query($sql);
+	$row = $result->fetch_array(MYSQLI_BOTH);
+	
+		$matchData= $row[0];
+		$matchLeague="Premier League";
+		$matchTeam1= $row[1];
+		$matchTeam2= $row[2];
+		$matchTeam1Name= $row[3];
+		$matchTeam2Name= $row[4];
+		$arms1src="";
+		$arms2src="";
+		
         echo '<script type="text/JavaScript">';
-        echo 'vueApp.matchData = "'.$matchData.'"';
-        echo 'vueApp.matchLeague = "'.$matchLeague.'"';
-        echo 'vueApp.matchTeam1 = "'.$matchTeam1.'"';
-        echo 'vueApp.matchTeam2 = "'.$matchTeam2.'"';
-        echo 'vueApp.matchTeam1Name = "'.$matchTeam1Name.'"';
-        echo 'vueApp.matchTeam2Name = "'.$matchTeam2Name.'"';
-        echo 'vueApp.arms1src = "'.$arms1src.'"';
-        echo 'vueApp.arms2src = "'.$arms2src.'"';
+        echo 'vueApp.matchData = "'.$matchData.'";';
+        echo 'vueApp.matchLeague = "'.$matchLeague.'";';
+        echo 'vueApp.matchTeam1 = "'.$matchTeam1.'";';
+        echo 'vueApp.matchTeam2 = "'.$matchTeam2.'";';
+        echo 'vueApp.matchTeam1Name = "'.$matchTeam1Name.'";';
+        echo 'vueApp.matchTeam2Name = "'.$matchTeam2Name.'";';
+        echo 'vueApp.arms1src = "'.$arms1src.'";';
+        echo 'vueApp.arms2src = "'.$arms2src.'";';
         echo '</script>';
 
         $connection->close();
