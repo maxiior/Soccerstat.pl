@@ -64,17 +64,26 @@ if(isset($_POST['whichMatch']))
         }
 
 		$sql = "SELECT g.date,g.score1,g.score2,g.team1,g.team2, c.country FROM games as g, clubs as c WHERE G.club_id= C.id";
-	$result = $connection->query($sql);
-	$row = $result->fetch_array(MYSQLI_BOTH);
+        $result = $connection->query($sql);
+        $row = $result->fetch_array(MYSQLI_BOTH);
 	
-		$matchData= $row[0];
-		$matchLeague="Premier League";
-		$matchTeam1= $row[1];
-		$matchTeam2= $row[2];
-		$matchTeam1Name= $row[3];
-		$matchTeam2Name= $row[4];
-		$arms1src="";
-		$arms2src="";
+        if($row[5] == "England") { $league='Premier League'; }
+        elseif($row[5] == "Spain") { $league='La Liga'; }
+        elseif($row[5] == "France") { $league='Ligue 1'; }
+        elseif($row[5] == "Germany") { $league='Bundesliga'; }
+        else { $league='Serie A'; }
+
+        $path1 = './photos/'.$league.'/'.$row[3].'.jpg';
+        $path2 = './photos/'.$league.'/'.$row[4].'.jpg';
+
+		$matchData = $row[0];
+		$matchLeague = $league;
+		$matchTeam1 = $row[1];
+		$matchTeam2 = $row[2];
+		$matchTeam1Name = $row[3];
+		$matchTeam2Name = $row[4];
+		$arms1src = $path1;
+		$arms2src = $path2;
 		
         echo '<script type="text/JavaScript">';
         echo 'vueApp.matchData = "'.$matchData.'";';
