@@ -28,7 +28,16 @@ else
     if($result = $connection->query($sql))
     {
         $row = $result->fetch_array(MYSQLI_BOTH);
-		echo($row[0]);
+		
+        //tutaj zamiast row[6] trzeba dać zmienną przechowującą kraj, w którym gra dany klub
+        if($row[6] == "England") { $league='Premier League'; }
+        elseif($row[6] == "Spain") { $league='La Liga'; }
+        elseif($row[6] == "France") { $league='Ligue 1'; }
+        elseif($row[6] == "Germany") { $league='Bundesliga'; }
+        else { $league='Serie A'; }
+
+        $path = './photos/'.$league.'/'.$row[7].'.jpg'; 
+
         echo '<script type="text/javascript">';
         echo 'vueApp.info[0].value="'.$row[7].'";';
         echo 'vueApp.info[1].value="'.$row[1].'";';
@@ -38,7 +47,7 @@ else
         echo 'vueApp.info[5].value="'.$row[5].'";';
         echo 'vueApp.info[6].value="'.$row[6].'";';
         echo 'vueApp.info[7].value="'.$row[0].'";';
-        echo 'vueApp.armsBest="";';
+        echo 'vueApp.armsBest="'.$path.'";';
         echo '</script>';
     }
     else
