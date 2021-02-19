@@ -28,7 +28,6 @@ else
     if($result = $connection->query($sql))
     {
         $row = $result->fetch_array(MYSQLI_BOTH);
-		
         $sql2 = "SELECT c.country FROM clubs AS c WHERE c.id = ".$row[8];
 
         $result2 = $connection->query($sql2);
@@ -40,7 +39,7 @@ else
         elseif($row2[0] == "Germany") { $league='Bundesliga'; }
         else { $league='Serie A'; }
 
-        $path = './photos/'.$league.'/'.$row[7].'.jpg'; 
+        $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[7]).'.jpg'; 
 
         echo '<script type="text/javascript">';
         echo 'vueApp.info[0].value="'.$row[7].'";';
