@@ -28,7 +28,9 @@ if(isset($_POST['whichMatch']))
     $result2 = $connection->query($sql2);
 
     //SELECT possession1,possession2,shoots1,shoots2,apasses1,apasses2,fauls1,fauls2 FROM games WHERE club_id=122
-    $sql3 = "SELECT possession1,possession2 FROM games WHERE club_id=122";
+    $sql3 = "SELECT possession1,possession2, apasses1, apasses2, shoots1, shoots2, fauls1,fauls2 
+	FROM games 
+	WHERE club_id=\"$results[0]\"";
     $result3 = $connection->query($sql3);
     $stats = $result3->fetch_array(MYSQLI_BOTH);
 
@@ -56,10 +58,10 @@ if(isset($_POST['whichMatch']))
             echo 'vueApp.squad.push({name1: "'.$team1[0].' '.$team1[1].'", name2:"'.$team2[0].' '.$team2[1].'"});';
             echo '</script>';
         }
-        for($i=1; $i<=4; $i++)
+        for($i=1, $j=0; $i<=4, $j<=7; $i++, $j+=2)
         {
             echo '<script type="text/JavaScript">';
-            echo 'vueApp.statistics.push({name: "'.$stat_name[$i-1].'", proc1: "'.$stats[0].'", proc2: "'.$stats[1].'", id: "'.$i.'"});';
+            echo 'vueApp.statistics.push({name: "'.$stat_name[$i-1].'", proc1: "'.$stats[$j].'", proc2: "'.$stats[$j+1].'", id: "'.$i.'"});';
             echo '</script>';
         }
 
@@ -67,7 +69,6 @@ if(isset($_POST['whichMatch']))
         $result = $connection->query($sql);
         $row = $result->fetch_array(MYSQLI_BOTH);
 		
-		echo($row[5]);
         if($row[5] == "England") { $league='Premier League'; }
         elseif($row[5] == "Spain") { $league='La Liga'; }
         elseif($row[5] == "France") { $league='Ligue 1'; }
