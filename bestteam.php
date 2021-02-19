@@ -27,7 +27,6 @@ else
 	
 	$result3 = $connection->query($sql3);
     $row3 = $result3->fetch_array(MYSQLI_BOTH);
-	echo($row3[1]);
 	
     $sql = "SELECT ocena_w_sezonie,ROUND(AVG(Bramki_zdobyte),0),ROUND(AVG(Bramki_stracone),0),ROUND(AVG(Posiadanie_piłki),0), 
 	ROUND(AVG(Strzały),0), ROUND(AVG(Podania_celne),0), ROUND(AVG(Faule),0), name, druzyna_ID 

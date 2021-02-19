@@ -20,9 +20,16 @@ if($connection->connect_errno!=0)
 }
 else
 {
-    $N_name = ;
-    $N_lastname = ;
-    $N_rate = ;
+    $sql ="SELECT players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, players.Team, players.League from ocena_zawodnika_w_sezonie, players, toty 
+    WHERE toty.zawodnik_ID = players.id AND players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND players.Position = \"FW\"";
+	$result = $connection->query($sql);
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+
+    $N_name = $name[0];
+    $N_lastname = $name[1];
+    $N_rate = $row[1];
     $N_arms = ;
 
     $LS_name = ;

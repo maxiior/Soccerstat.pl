@@ -32,6 +32,9 @@
         $free2 = rand(0,20);
 
         if(rand(0,100)>80) { $penalty1 = rand(0,2); }
+        else { $penalty1 = 0; }
+
+        if(rand(0,100)>80) { $penalty2 = rand(0,2); }
         else { $penalty2 = 0; }
 
         $corner1 = rand(0,8);
