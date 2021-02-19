@@ -21,16 +21,16 @@ if($connection->connect_errno!=0)
 }
 else
 {
-    $sql = "SELECT MAX(ocena_w_sezonie),ROUND(AVG(Bramki_zdobyte),0),ROUND(AVG(Bramki_stracone),0),ROUND(AVG(Posiadanie_piłki),0), ROUND(AVG(Strzały),0), ROUND(AVG(Podania_celne),0), ROUND(AVG(Faule),0), name 
+    $sql = "SELECT MAX(ocena_w_sezonie),ROUND(AVG(Bramki_zdobyte),0),ROUND(AVG(Bramki_stracone),0),ROUND(AVG(Posiadanie_piłki),0), ROUND(AVG(Strzały),0), ROUND(AVG(Podania_celne),0), ROUND(AVG(Faule),0), name, druzyna_ID
     FROM Ocena_zespołu_w_sezonie INNER JOIN ocena_zespołu_w_meczu ON ocena_zespołu_w_sezonie.druzyna_id = ocena_zespołu_w_meczu.team_id 
     INNER JOIN clubs ON ocena_zespołu_w_sezonie.druzyna_id = clubs.id";
-
-    $sql2 = "SELECT c.country FROM Ocena_zespołu_w_sezonie, clubs AS c WHERE ocena_zespołu_w_sezonie.druzyna_id = clubs.id";
 
     if($result = $connection->query($sql))
     {
         $row = $result->fetch_array(MYSQLI_BOTH);
 		
+        $sql2 = "SELECT c.country FROM clubs AS c WHERE c.id = ".$row[8];
+
         $result2 = $connection->query($sql2);
         $row2 = $result2->fetch_array(MYSQLI_BOTH);
 
