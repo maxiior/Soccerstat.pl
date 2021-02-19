@@ -66,15 +66,16 @@ if(isset($_POST['whichMatch']))
 		$sql = "SELECT g.date,g.score1,g.score2,g.team1,g.team2, c.country FROM games as g, clubs as c WHERE G.club_id= C.id";
         $result = $connection->query($sql);
         $row = $result->fetch_array(MYSQLI_BOTH);
-	
+		
+		echo($row[5]);
         if($row[5] == "England") { $league='Premier League'; }
         elseif($row[5] == "Spain") { $league='La Liga'; }
         elseif($row[5] == "France") { $league='Ligue 1'; }
         elseif($row[5] == "Germany") { $league='Bundesliga'; }
         else { $league='Serie A'; }
 
-        $path1 = './photos/'.$league.'/'.$row[3].'.jpg';
-        $path2 = './photos/'.$league.'/'.$row[4].'.jpg';
+        $path1 = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+        $path2 = './photos/'.$league.'/'.str_replace(" ", "_", $row[4]).'.jpg';
 
 		$matchData = $row[0];
 		$matchLeague = $league;
