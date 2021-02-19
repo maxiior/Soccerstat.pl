@@ -20,8 +20,8 @@ if($connection->connect_errno!=0)
 }
 else
 {
-    $sql ="SELECT players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, players.Team, players.League from ocena_zawodnika_w_sezonie, players, toty 
-    WHERE toty.zawodnik_ID = players.id AND players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND players.Position = \"FW\"";
+    $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
+    WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"FW\"";
 	$result = $connection->query($sql);
     $row = $result->fetch_array(MYSQLI_BOTH);
     $name = split(" ", $row[0]);
@@ -30,57 +30,106 @@ else
     $N_name = $name[0];
     $N_lastname = $name[1];
     $N_rate = $row[1];
-    $N_arms = ;
+    $N_arms = $path;
 
-    $LS_name = ;
-    $LS_lastname = ;
-    $LS_rate = ;
-    $LS_arms = ;
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
 
-    $PS_name = ;
-    $PS_lastname = ;
-    $PS_rate = ;
-    $PS_arms = ;
+    $LS_name = $name[0];
+    $LS_lastname = $name[1];
+    $LS_rate = $row[1];
+    $LS_arms = $path;
 
-    $SPO_name = ;
-    $SPO_lastname = ;
-    $SPO_rate = ;
-    $SPO_arms = ;
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
 
-    $LP_name = ;
-    $LP_lastname = ;
-    $LP_rate = ;
-    $LP_arms = ;
+    $PS_name = $name[0];
+    $PS_lastname = $name[1];
+    $PS_rate = $row[1];
+    $PS_arms = $path;
 
-    $PP_name = ;
-    $PP_lastname = ;
-    $PP_rate = ;
-    $PP_arms = ;
+    $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
+    WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"MF\"";
+	$result = $connection->query($sql);
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
 
-    $LO_name = ;
-    $LO_lastname = ;
-    $LO_rate = ;
-    $LO_arms = ;
+    $SPO_name = $name[0];
+    $SPO_lastname = $name[1];
+    $SPO_rate = $row[1];
+    $SPO_arms = $path;
 
-    $PO_name = ;
-    $PO_lastname = ;
-    $PO_rate = ;
-    $PO_arms = ;
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
 
-    $LSO_name = ;
-    $LSO_lastname = ;
-    $LSO_rate = ;
-    $LSO_arms = ;
+    $LP_name = $name[0];
+    $LP_lastname = $name[1];
+    $LP_rate = $row[1];
+    $LP_arms = $path;
 
-    $PSO_name = ;
-    $PSO_lastname = ;
-    $PSO_rate = ;
-    $PSO_arms = ;
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
 
-    $BR_name = ;
-    $BR_lastname = ;
-    $BR_rate = ;
-    $BR_arms = ;
+    $PP_name = $name[0];
+    $PP_lastname = $name[1];
+    $PP_rate = $row[1];
+    $PP_arms = $path;
+
+    $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
+    WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"DF\"";
+	$result = $connection->query($sql);
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+
+    $LO_name = $name[0];
+    $LO_lastname = $name[1];
+    $LO_rate = $row[1];
+    $LO_arms = $path;
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+
+    $PO_name = $name[0];
+    $PO_lastname = $name[1];
+    $PO_rate = $row[1];
+    $PO_arms = $path;
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+
+    $LSO_name = $name[0];
+    $LSO_lastname = $name[1];
+    $LSO_rate = $row[1];
+    $LSO_arms = $path;
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+
+    $PSO_name = $name[0];
+    $PSO_lastname = $name[1];
+    $PSO_rate = $row[1];
+    $PSO_arms = $path;
+
+    $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
+    WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"GK\"";
+	$result = $connection->query($sql);
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $name = split(" ", $row[0]);
+    $path = './photos/'.$league.'/'.str_replace(" ", "_", $row[3]).'.jpg';
+
+    $BR_name = $name[0];
+    $BR_lastname = $name[1];
+    $BR_rate = $row[1];
+    $BR_arms = $path;
 
     echo '<script type="text/JavaScript">';
     echo 'vueApp.players[0].precise[0].name = '.$N_name.';';
