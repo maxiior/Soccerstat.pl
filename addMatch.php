@@ -72,13 +72,20 @@
         $sq= "SELECT c.id FROM clubs as c WHERE c.name = '$team1'";
         $result = $connection->query($sq) or die($connection->error);
         $row = mysqli_fetch_array($result);
-                
-        $sql = "INSERT INTO games (club_id, team1, team2, score1, score2, possession1, possession2, apasses1, apasses2,
+		
+		
+		$sq2= "SELECT c.id FROM clubs as c WHERE c.name = '$team2'";
+        $result2 = $connection->query($sq2) or die($connection->error);
+        $row2 = mysqli_fetch_array($result2);
+		
+		
+        //dodawanie daty z domyslna wartoscia        
+        $sql = "INSERT INTO games (club_id, club2_id, date, team1, team2, score1, score2, possession1, possession2, apasses1, apasses2,
         shoots1, shoots2, ashoots1, ashoots2, yellow1, yellow2, red1, red2, free1, free2, penalty1, penalty2,
         corner1, corner2, fauls1, fauls2)
-        VALUES ($row[0], '$team1', '$team2', $score1,$score2,$possession1,$possession2,$apasses1,$apasses2,$shoots1,$shoots2,$ashoots1,$ashoots2,$yellow1,$yellow2,$red1,$red2,$free1,$free2,$penalty1,$penalty2,$corner1,$corner2,$fauls1,$fauls2)";
+        VALUES ($row[0],$row2[0], '2020-02-02', '$team1', '$team2', $score1,$score2,$possession1,$possession2,$apasses1,$apasses2,$shoots1,$shoots2,$ashoots1,$ashoots2,$yellow1,$yellow2,$red1,$red2,$free1,$free2,$penalty1,$penalty2,$corner1,$corner2,$fauls1,$fauls2)";
 
-        if(@$connection->query($sql)=== TRUE)
+        if($connection->query($sql)=== TRUE)
         {
             $_SESSION["info"] = 0;
             header('Location: index.php');
