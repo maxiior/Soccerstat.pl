@@ -21,16 +21,15 @@ if(isset($_POST['whichMatch']))
 	$result = $connection->query($sql);
 	$results = $result->fetch_array(MYSQLI_BOTH);
 	
-	$sql1 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id= \"$results[0]\"";
+	$sql1 = "SELECT p.player FROM players as p WHERE p.club_id= \"$results[0]\"";
     $result1 = $connection->query($sql1);
 
-    $sql2 = "SELECT p.name, p.surname FROM players as p WHERE p.club_id= \"$results[1]\"";
+    $sql2 = "SELECT p.player FROM players as p WHERE p.club_id= \"$results[1]\"";
     $result2 = $connection->query($sql2);
 
     //SELECT possession1,possession2,shoots1,shoots2,apasses1,apasses2,fauls1,fauls2 FROM games WHERE club_id=122
     $sql3 = "SELECT possession1,possession2, apasses1, apasses2, shoots1, shoots2, fauls1,fauls2 
-	FROM games 
-	WHERE club_id=\"$results[0]\"";
+	FROM games WHERE club_id=\"$results[0]\"";
     $result3 = $connection->query($sql3);
     $stats = $result3->fetch_array(MYSQLI_BOTH);
 
@@ -53,9 +52,11 @@ if(isset($_POST['whichMatch']))
         for($i=0; $i<11; $i++)
         {
             $team1 = $result1->fetch_array(MYSQLI_BOTH);
+			$name1 = explode(" ", $team1[0]);
             $team2 = $result2->fetch_array(MYSQLI_BOTH);
+			$name2 = explode(" ", $team2[0]);
             echo '<script type="text/JavaScript">';
-            echo 'vueApp.squad.push({name1: "'.$team1[0].' '.$team1[1].'", name2:"'.$team2[0].' '.$team2[1].'"});';
+            echo 'vueApp.squad.push({name1: "'.$name1[0].' '.$name1[1].'", name2:"'.$name2[0].' '.$name2[1].'"});';
             echo '</script>';
         }
         for($i=1, $j=0; $i<=4, $j<=7; $i++, $j+=2)
@@ -65,7 +66,7 @@ if(isset($_POST['whichMatch']))
             echo '</script>';
         }
 
-		$sql = "SELECT g.date,g.score1,g.score2,g.team1,g.team2, c.country FROM games as g, clubs as c WHERE G.club_id= C.id";
+		$sql = "SELECT g.date,g.score1,g.score2,g.team1,g.team2, c.country FROM games as g, clubs as c WHERE G.club_id= C.id AND g.id=\"$whichMatch\"";
         $result = $connection->query($sql);
         $row = $result->fetch_array(MYSQLI_BOTH);
 		
