@@ -32,7 +32,7 @@ else
 
 	if(isset($_POST['league']) && $_POST['league']=='LaLiga')
     {
-        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"Spain\" LIMIT 27";
+        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"Spain\" ORDER BY date DESC LIMIT 27";
         
         if($result = $connection->query($sql))
         {
@@ -59,7 +59,7 @@ else
     }
     elseif(isset($_POST['league']) && $_POST['league']=='Premier League')
     {
-        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"England\" LIMIT 27";
+        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"England\" ORDER BY date DESC LIMIT 27";
 
         if($result = $connection->query($sql))
         {
@@ -86,7 +86,7 @@ else
     }
     elseif(isset($_POST['league']) && $_POST['league']=='Ligue 1')
     {
-        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"France\" LIMIT 27";
+        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"France\" ORDER BY date DESC LIMIT 27";
         
         if($result = $connection->query($sql))
         {
@@ -113,7 +113,7 @@ else
     }
     elseif(isset($_POST['league']) && $_POST['league']=='Bundesliga')
     {
-        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"Germany\" LIMIT 27";
+        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"Germany\" ORDER BY date DESC LIMIT 27";
         
         if($result = $connection->query($sql))
         {
@@ -140,7 +140,7 @@ else
     }
     elseif(isset($_POST['league']) && $_POST['league']=='Serie A')
     {
-        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"Italy\" LIMIT 27";
+        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id FROM games AS g, clubs AS c WHERE c.id = g.club_id AND c.country = \"Italy\" ORDER BY date DESC LIMIT 27";
         
         if($result = $connection->query($sql))
         {
@@ -167,7 +167,7 @@ else
     }
     else
     {
-        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id, c.country FROM games AS g, clubs AS c WHERE c.id = g.club_id LIMIT 27";
+        $sql = "SELECT g.date, g.team1, g.team2, g.score1, g.score2, g.id, c.country FROM games AS g, clubs AS c WHERE c.id = g.club_id ORDER BY date DESC LIMIT 27";
         
         if($result = $connection->query($sql))
         {
