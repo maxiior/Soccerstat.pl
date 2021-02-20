@@ -30,7 +30,7 @@ else
 
     $sql2 = "SELECT ROUND(AVG(score1),0), ROUND(AVG(score2),0), ROUND(AVG(possession1),0), ROUND(AVG(shoots1),0), ROUND(AVG(apasses1),0), ROUND(AVG(fauls1),0), team1, club_id
     FROM games WHERE club_id= \"$row[1]\"";
-
+    
     $sql3 = "SELECT ROUND(AVG(score2),0), ROUND(AVG(score1),0), ROUND(AVG(possession2),0), ROUND(AVG(shoots2),0), ROUND(AVG(apasses2),0), ROUND(AVG(fauls2),0)
     FROM games WHERE club2_id= \"$row[1]\"";
 
@@ -41,10 +41,11 @@ else
         $row2 = $result2->fetch_array(MYSQLI_BOTH);
         $row3 = $result3->fetch_array(MYSQLI_BOTH);
 		
-        $sql4 = "SELECT c.country FROM clubs AS c WHERE c.id = ".$row2[7];
+        $sql4 = "SELECT c.country FROM clubs AS c WHERE c.id = ".$row2[7]." LIMIT 1";
 
         $result4 = $connection->query($sql4);
         $row4 = $result4->fetch_array(MYSQLI_BOTH);
+        
 
         if($row4[0] == "England") { $league='Premier League'; }
         elseif($row4[0] == "Spain") { $league='La Liga'; }
