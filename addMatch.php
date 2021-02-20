@@ -87,19 +87,18 @@
 
         if($connection->query($sql))
         {
+            $connection->close();
             $_SESSION["info"] = 0;
             header('Location: index.php');
             exit();
         }
         else
         {
+            $connection->close();
             $_SESSION["info"] = -1;
             header('Location: index.php');
             exit();
         }
 
     }
-
-    $connection->close();
-
 ?>
