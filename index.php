@@ -242,4 +242,12 @@ else if(isset($_SESSION["info"]) && $_SESSION["info"] == 3)
     echo '</script>';
     unset($_SESSION["info"]);
 }
+else if(isset($_SESSION["info"]) && $_SESSION["info"] == 4)
+{
+    echo '<script type="text/JavaScript">';
+    echo 'vueApp.showInfo=true;';
+    echo 'vueApp.infoVal="The data has been refreshed.";';
+    echo '</script>';
+    unset($_SESSION["info"]);
+}
 ?>

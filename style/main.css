@@ -23,6 +23,8 @@
     box-sizing: border-box;
     padding: 20px 50px;
     background-color: #49a300;
+    display: flex;
+    justify-content: space-between;
 }
 .top a
 {
@@ -164,4 +166,28 @@
     left: 0;
     right: 0;
     background: rgba(0,0,0,0.6)
+}
+
+.box
+{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.refresh
+{
+    padding: 15px;
+    margin-left: 30px;
+    border: none;
+    background-color: #343434;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.refresh:hover
+{
+    transform:scale(1.1);
+    transition: transform 0.2s;
 }

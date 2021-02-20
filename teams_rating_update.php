@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 error_reporting(E_ERROR | E_PARSE);
 
 $connection = @new mysqli('localhost', 'root', '', 'pilka');
@@ -30,5 +30,8 @@ for($i=100; $i<200; $i++)
     $result2 = $connection->query($sql2);
 }
 
+$_SESSION["info"] = 4;
+header('Location: index.php');
+exit();
 
 ?>
