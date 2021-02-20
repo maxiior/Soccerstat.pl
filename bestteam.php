@@ -55,7 +55,7 @@ else
         $path = './photos/'.$league.'/'.str_replace(" ", "_", $row2[6]).'.jpg'; 
 
         echo '<script type="text/javascript">';
-        echo 'vueApp.info[0].value="'.$row2[5].'";';
+        echo 'vueApp.info[0].value="'.$row2[6].'";';
         echo 'vueApp.info[1].value="'.$row2[0].'";';
         echo 'vueApp.info[2].value="'.$row2[1].'";';
         echo 'vueApp.info[3].value="'.$row2[2].'%";';
