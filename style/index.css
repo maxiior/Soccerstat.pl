@@ -47,10 +47,12 @@
     text-align: center;
     width: 620px;
 }
+
 .info span
 {
     padding: 10px;
 }
+
 .list button
 {
     background-color: white;

@@ -3,30 +3,30 @@
     session_start();
     require_once "connect.php";
 
-    if(empty($_POST['team1']) ||
-    empty($_POST['team2']) ||
-    empty($_POST['score1']) ||
-    empty($_POST['score2']) ||
-    empty($_POST['possession1']) ||
-    empty($_POST['possession2']) ||
-    empty($_POST['apasses1']) ||
-    empty($_POST['apasses2']) ||
-    empty($_POST['shoots1']) ||
-    empty($_POST['shoots2']) ||
-    empty($_POST['ashoots1']) ||
-    empty($_POST['ashoots2']) ||
-    empty($_POST['yellow1']) ||
-    empty($_POST['yellow2']) ||
-    empty($_POST['red1']) ||
-    empty($_POST['red2']) ||
-    empty($_POST['free1']) ||
-    empty($_POST['free2']) ||
-    empty($_POST['penalty1']) ||
-    empty($_POST['penalty2']) ||
-    empty($_POST['corner1']) ||
-    empty($_POST['corner2']) ||
-    empty($_POST['fauls1']) ||
-    empty($_POST['fauls2']))
+    if(!isset($_POST['team1']) ||
+    !isset($_POST['team2']) ||
+    !isset($_POST['score1']) ||
+    !isset($_POST['score2']) ||
+    !isset($_POST['possession1']) ||
+    !isset($_POST['possession2']) ||
+    !isset($_POST['apasses1']) ||
+    !isset($_POST['apasses2']) ||
+    !isset($_POST['shoots1']) ||
+    !isset($_POST['shoots2']) ||
+    !isset($_POST['ashoots1']) ||
+    !isset($_POST['ashoots2']) ||
+    !isset($_POST['yellow1']) ||
+    !isset($_POST['yellow2']) ||
+    !isset($_POST['red1']) ||
+    !isset($_POST['red2']) ||
+    !isset($_POST['free1']) ||
+    !isset($_POST['free2']) ||
+    !isset($_POST['penalty1']) ||
+    !isset($_POST['penalty2']) ||
+    !isset($_POST['corner1']) ||
+    !isset($_POST['corner2']) ||
+    !isset($_POST['fauls1']) ||
+    !isset($_POST['fauls2']))
     {
         $_SESSION["info"] = -1;
         header('Location: index.php');
@@ -85,7 +85,7 @@
         corner1, corner2, fauls1, fauls2)
         VALUES ($row[0],$row2[0], '2020-02-02', '$team1', '$team2', $score1,$score2,$possession1,$possession2,$apasses1,$apasses2,$shoots1,$shoots2,$ashoots1,$ashoots2,$yellow1,$yellow2,$red1,$red2,$free1,$free2,$penalty1,$penalty2,$corner1,$corner2,$fauls1,$fauls2)";
 
-        if($connection->query($sql)=== TRUE)
+        if($connection->query($sql))
         {
             $_SESSION["info"] = 0;
             header('Location: index.php');
