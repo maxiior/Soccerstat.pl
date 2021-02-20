@@ -139,9 +139,6 @@ else
     $BR_lastname = $name[1];
     $BR_rate = $row[1];
     $BR_arms = $path;
-
-	echo($PS_name);
-	echo($PS_lastname);
 	
     echo '<script type="text/JavaScript">';
     echo 'vueApp.players[0].precise[0].name = "'.$N_name.'";';
