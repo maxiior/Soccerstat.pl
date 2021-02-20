@@ -1,11 +1,12 @@
 <?php
 	require_once "connect.php";
+    session_start();
+
     if(isset($_POST['flexRadioDefault']) && $_POST['flexRadioDefault']=='json')
     {
         $con = mysqli_connect($host,$db_user,$db_password, $db_name) or die("Error " . mysqli_error($con));
         
-        // get Matches
-        $query = "SELECT * FROM matches";
+        $query = "SELECT * FROM games";
         if (!$result = mysqli_query($con, $query)) {
             exit(mysqli_error($con));
         }
@@ -18,14 +19,13 @@
                 $matches[] = $row;
             }
         }
-        
-        $fp = fopen('matches.json', 'w');
+
+        $fp = fopen('Matches.json', 'w');
         fwrite($fp, json_encode($matches));
         fclose($fp);
         
         mysqli_close($con);
-		
-		$_SESSION["info"] = 2;
+        $_SESSION["info"] = 3;
 		header('Location: index.php');
 		exit();
     }
@@ -33,9 +33,7 @@
     {
         $con = mysqli_connect($host,$db_user,$db_password, $db_name) or die("Error " . mysqli_error($con));
         
-
-        // get Matches
-        $query = "SELECT * FROM matches";
+        $query = "SELECT * FROM games";
         if (!$result = mysqli_query($con, $query)) {
             exit(mysqli_error($con));
         }
@@ -49,9 +47,9 @@
             }
         }
 
-        header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename=Matches.csv');
-        $output = fopen('php://output', 'w');
+        //header('Content-Type: text/csv; charset=utf-8');
+        //header('Content-Disposition: attachment; filename=Matches.csv');
+        $output = fopen('Matches.csv', 'w');
         fputcsv($output, array('Date', 'First Team ID', 'Second Team ID', 'First Team Name', 'Second Team Name', 'Score', 'League ID', 'League Name', 'First Team Shots', 'Second Team Shots', 'First Team Possession', 'Second Team Possession', 'First Team Pass', 'Second Team Pass', 'First Team Fauls', 'Second Team Fauls'));
 
         if (count($matches) > 0) 
@@ -62,6 +60,10 @@
             }
         }
         mysqli_close($con);
+        
+        $_SESSION["info"] = 3;
+		header('Location: index.php');
+		exit();
     }
 
 ?>

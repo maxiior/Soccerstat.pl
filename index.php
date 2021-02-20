@@ -234,5 +234,12 @@ else if(isset($_SESSION["info"]) && $_SESSION["info"] == 2)
     echo '</script>';
     unset($_SESSION["info"]);
 }
-
+else if(isset($_SESSION["info"]) && $_SESSION["info"] == 3)
+{
+    echo '<script type="text/JavaScript">';
+    echo 'vueApp.showInfo=true;';
+    echo 'vueApp.infoVal="The data was successfully exported.";';
+    echo '</script>';
+    unset($_SESSION["info"]);
+}
 ?>
