@@ -49,7 +49,7 @@
         </div>
         <section class="statistics">
             <div style="width: 80%;">
-                <div v-for="s in statistics" v-bind:key="s.id" class="single-stat">
+                <div v-for="(s, k) in statistics" v-bind:key="s.id" class="single-stat">
                     <div class="stats">
                         {% verbatim %}
                         <div>{{ s.proc1 }}</div>
@@ -58,7 +58,7 @@
                         {% endverbatim %}
                     </div>
                     <div class="belt1">
-                        <div class="belt2"></div>
+                        <div class="belt2" :style="style(k)"></div>
                     </div>
                 </div>
             </div>

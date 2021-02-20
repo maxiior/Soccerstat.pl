@@ -54,10 +54,10 @@ const vueApp = new Vue({
             {position:'BR', precise: [{position: 'player-BR', name: '', lastname: '', rate: '', arms: ''}], p: 7}
         ],
         statistics: [
-            {name: 'Possession', proc1: '60%', proc2: '40%', id: 1},
-            {name: 'Shoots', proc1: '6', proc2: '4', id: 2},
-            {name: 'Passes', proc1: '60', proc2: '40', id: 3},
-            {name: 'Fauls', proc1: '6', proc2: '4', id: 4}
+            {name: 'Possession', proc1: 60, proc2: 40, id: 1},
+            {name: 'Shoots', proc1: 6, proc2: 4, id: 2},
+            {name: 'Passes', proc1: 60, proc2: 40, id: 3},
+            {name: 'Fauls', proc1: 6, proc2: 4, id: 4}
         ],
         squad: [
             {name1: 'Ter Stegen', name2: 'Courtois', id: 1},
@@ -118,6 +118,24 @@ const vueApp = new Vue({
                     this.showExport=true;
                     break;
             }
+        },
+        style: function(i) 
+        {
+            switch(i)
+            {
+                case 0:
+                    return { width: `${this.statistics[0].proc1}%` }
+                case 1:
+                    var x = 100*this.statistics[1].proc1/(parseInt(this.statistics[1].proc2)+parseInt(this.statistics[1].proc1));
+                    return { width: `${x}%` }
+                case 2:
+                    var x = 100*this.statistics[2].proc1/(parseInt(this.statistics[2].proc2)+parseInt(this.statistics[2].proc1));
+                    return { width: `${x}%` }
+                case 3:
+                    var x = 100*this.statistics[3].proc1/(parseInt(this.statistics[3].proc2)+parseInt(this.statistics[3].proc1));
+                    return { width: `${x}%` }
+            }
+            
         }
     }
 })

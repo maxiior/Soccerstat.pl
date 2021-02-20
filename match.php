@@ -28,7 +28,7 @@ if(isset($_POST['whichMatch']))
     $result2 = $connection->query($sql2);
 
     //SELECT possession1,possession2,shoots1,shoots2,apasses1,apasses2,fauls1,fauls2 FROM games WHERE club_id=122
-    $sql3 = "SELECT possession1,possession2, apasses1, apasses2, shoots1, shoots2, fauls1,fauls2 
+    $sql3 = "SELECT possession1,possession2, shoots1, shoots2, apasses1, apasses2, fauls1,fauls2 
 	FROM games WHERE club_id=\"$results[0]\"";
     $result3 = $connection->query($sql3);
     $stats = $result3->fetch_array(MYSQLI_BOTH);
