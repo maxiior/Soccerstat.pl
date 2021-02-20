@@ -1,5 +1,5 @@
 <?php
-
+	require_once "connect.php";
     if(isset($_POST['flexRadioDefault']) && $_POST['flexRadioDefault']=='json')
     {
         $con = mysqli_connect($host,$db_user,$db_password, $db_name) or die("Error " . mysqli_error($con));
@@ -24,6 +24,10 @@
         fclose($fp);
         
         mysqli_close($con);
+		
+		$_SESSION["info"] = 2;
+		header('Location: index.php');
+		exit();
     }
     else
     {
