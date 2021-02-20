@@ -45,7 +45,7 @@
 {
     display: inline-block;
     text-align: center;
-    width: 300px;
+    width: 620px;
 }
 .info span
 {
@@ -55,4 +55,16 @@
 {
     background-color: white;
     border: none;
+}
+
+.team
+{
+    display: inline-block;
+    width: 250px;
+}
+
+.score
+{
+    width: 100px;
+    display: inline-block;
 }

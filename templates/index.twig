@@ -23,11 +23,11 @@
                         </div>
                         <div class="info">
                             {% verbatim %}
-                            <span v-if="m.whoWon === 1 || m.whoWon === 0" style="font-weight: bold;">{{ m.team1 }}</span>
-                            <span v-else>{{ m.team1 }}</span>
-                            <span>{{ m.score }}</span>
-                            <span v-if="m.whoWon === 2 || m.whoWon === 0" style="font-weight: bold;">{{ m.team2 }}</span>
-                            <span v-else>{{ m.team2 }}</span>
+                            <div class="team" v-if="m.whoWon === 1 || m.whoWon === 0" style="font-weight: bold;">{{ m.team1 }}</div>
+                            <div class="team" v-else>{{ m.team1 }}</div>
+                            <div class="score">{{ m.score }}</div>
+                            <div class="team" v-if="m.whoWon === 2 || m.whoWon === 0" style="font-weight: bold;">{{ m.team2 }}</div>
+                            <div class="team" v-else>{{ m.team2 }}</div>
                             {% endverbatim %}
                         </div>
                     </button>
