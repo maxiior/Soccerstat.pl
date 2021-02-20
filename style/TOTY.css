@@ -74,7 +74,7 @@ main
 {
     height: 50px;
     width: 80px;
-    background-color: green;
+    background-color: #737373;
 }
 
 .right
@@ -82,7 +82,9 @@ main
     float: left;
     height: 130px;
     width: 150px;
-    background-color: red;
+    background-color: #191919;
+    padding: 10px;
+    color: white;
 }
 
 .N, .P, .BR
