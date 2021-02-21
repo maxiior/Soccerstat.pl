@@ -6,7 +6,7 @@
 
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
-    for($i=24035; $i<25000; $i++)
+    for($i=115960; $i<117000; $i++)
     {
         $score1 = rand(0,4);
         $apasses1 = rand(20,100);
@@ -20,7 +20,7 @@
         $fauls1 = $yellow1 + $red1 + rand(0,8);
         $time = rand(30,90);
 
-        $sql = "UPDATE player_stats SET Bramki={$score1}, Podania_celne={$apasses1}, Strzały={$shoots1}, Strzały_celne={$ashoots1}, Żółte_kartki={$yellow1}, Czerwoni_kartki={$red1}, 
+        $sql = "UPDATE player_stats SET Bramki={$score1}, Podania_celne={$apasses1}, Strzały={$shoots1}, Strzały_celne={$ashoots1}, Żółte_kartki={$yellow1}, Czerwone_kartki={$red1}, 
         Faule={$fauls1}, Czas_gry={$time} WHERE id = ".$i;
 
         $result = $connection->query($sql);

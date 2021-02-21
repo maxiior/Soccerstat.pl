@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
+
 require_once './vendor/autoload.php';
 require_once "connect.php";
 
@@ -21,6 +23,69 @@ if($connection->connect_errno!=0)
 }
 else
 {
+    $sql ="SELECT ocena_zawodnika_w_sezonie.zawodnik_ID from ocena_zawodnika_w_sezonie, players 
+    WHERE ocena_zawodnika_w_sezonie.zawodnik_ID = players.ID AND players.Position = \"FW\" ORDER BY ocena_zawodnika_w_sezonie.ocena_w_sezonie DESC LIMIT 3";
+	$result = $connection->query($sql);
+    
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $sql ="SELECT ocena_zawodnika_w_sezonie.zawodnik_ID from ocena_zawodnika_w_sezonie, players 
+    WHERE ocena_zawodnika_w_sezonie.zawodnik_ID = players.ID AND players.Position = \"MF\" ORDER BY ocena_zawodnika_w_sezonie.ocena_w_sezonie DESC LIMIT 3";
+	$result = $connection->query($sql);
+    
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $sql ="SELECT ocena_zawodnika_w_sezonie.zawodnik_ID from ocena_zawodnika_w_sezonie, players 
+    WHERE ocena_zawodnika_w_sezonie.zawodnik_ID = players.ID AND players.Position = \"DF\" ORDER BY ocena_zawodnika_w_sezonie.ocena_w_sezonie DESC LIMIT 4";
+	$result = $connection->query($sql);
+    
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+    $sql ="SELECT ocena_zawodnika_w_sezonie.zawodnik_ID from ocena_zawodnika_w_sezonie, players 
+    WHERE ocena_zawodnika_w_sezonie.zawodnik_ID = players.ID AND players.Position = \"GK\" ORDER BY ocena_zawodnika_w_sezonie.ocena_w_sezonie DESC LIMIT 1";
+	$result = $connection->query($sql);
+    
+    $row = $result->fetch_array(MYSQLI_BOTH);
+    $sql ="CALL ADD_TOTY (".$row[0].", 1)";
+    $connection->query($sql);
+
+
+
+
     $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
     WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"FW\"";
 	$result = $connection->query($sql);
@@ -29,14 +94,11 @@ else
     $name = explode(" ", $row[0]);
     $path = './photos/'.$row[3].'/'.str_replace(" ", "_", $row[2]).'.jpg';
 
-	
     $N_name = $name[0];
     $N_lastname = $name[1];
     $N_rate = $row[1];
     $N_arms = $path;
 	
-	
-
     $row = $result->fetch_array(MYSQLI_BOTH);
     $name = explode(" ", $row[0]);
     $path = './photos/'.$row[3].'/'.str_replace(" ", "_", $row[2]).'.jpg';
@@ -46,7 +108,6 @@ else
     $LS_rate = $row[1];
     $LS_arms = $path;
 	
-
     $row = $result->fetch_array(MYSQLI_BOTH);
     $name = explode(" ", $row[0]);
     $path = './photos/'.$row[3].'/'.str_replace(" ", "_", $row[2]).'.jpg';
@@ -55,7 +116,6 @@ else
     $PS_lastname = $name[1];
     $PS_rate = $row[1];
     $PS_arms = $path;
-	
 
     $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
     WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"MF\"";
@@ -127,7 +187,6 @@ else
     $PSO_rate = $row[1];
     $PSO_arms = $path;
 	
-
     $sql ="SELECT Players.Player, ocena_zawodnika_w_sezonie.ocena_w_sezonie, Players.Team, Players.League from ocena_zawodnika_w_sezonie, players, toty 
     WHERE toty.zawodnik_ID = Players.id AND Players.id = ocena_zawodnika_w_sezonie.zawodnik_ID AND Players.Position = \"GK\"";
 	$result = $connection->query($sql);

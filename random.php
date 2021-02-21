@@ -14,9 +14,7 @@
         else { $month = rand(10,12); }
 		if(rand(1,29)<10) { $day ="0";  $day.=rand(1,9); }
         else { $day = rand(10,29); }
-		$date = "$year-$month-$day";
-		echo($date);
-		
+		$date = "$year-$month-$day";	
 		
         $score1 = rand(0,8);
         $score2 = rand(0,8);
