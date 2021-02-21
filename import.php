@@ -9,7 +9,7 @@
     if(isset($_POST['flexRadioDefault']) && $_POST['flexRadioDefault']=='json')
     {
         $path = $_FILES['csvFile']['tmp_name'];
-        json_to_DB($path);
+        json_to_DB($path, $host, $db_user, $db_password, $db_name);
     }
     else
     {

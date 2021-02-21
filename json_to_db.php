@@ -1,11 +1,10 @@
-<?php
-    require_once 'connect.php';
-
-    function json_to_DB($path)
+<?php   
+    function json_to_DB($path, $host, $db_user, $db_password, $db_name)
     {
-        $conn = new mysqli($host, $db_user, $db_password, $db_name);
-        if ($conn->connect_error) 
-        { 
+        $connection = @new mysqli($host, $db_user, $db_password, $db_name);
+
+        if($connection->connect_errno!=0)
+        {
             $_SESSION["info"] = 1;
             header('Location: index.php');
             exit();
@@ -18,8 +17,8 @@
         foreach ($array_data as $row) 
         {
             $sql = "INSERT INTO clubs (name, code, country) VALUES ('" . $row["name"] . "', '" . $row["code"] . "', '" . $row["country"] . "')";
-            $conn->query($sql);	
+            $connection->query($sql);	
         }
-        $conn->close();
+        $connection->close();
     }
 ?>
