@@ -50,7 +50,7 @@
         //header('Content-Type: text/csv; charset=utf-8');
         //header('Content-Disposition: attachment; filename=Matches.csv');
         $output = fopen('Matches.csv', 'w');
-        fputcsv($output, array('Date', 'First Team ID', 'Second Team ID', 'First Team Name', 'Second Team Name', 'Score', 'League ID', 'League Name', 'First Team Shots', 'Second Team Shots', 'First Team Possession', 'Second Team Possession', 'First Team Pass', 'Second Team Pass', 'First Team Fauls', 'Second Team Fauls'));
+        fputcsv($output, array('ID', 'Club_ID', 'Club2_ID', 'Date', 'Team1', 'Team2', 'Score1', 'Score2', 'Possession1', 'Possession2', 'Apasses1', 'Apasses2', 'Shoots1', 'Shoots2', 'Ashoots1', 'Ashoots2','yellow1','yellow2','red1','red2','free1','free2','penalty1','penalty2','corner1','corner2','fauls1','fauls2'));
 
         if (count($matches) > 0) 
         {
