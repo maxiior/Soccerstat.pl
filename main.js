@@ -94,7 +94,7 @@ const vueApp = new Vue({
         matchTeam2: '0',
         matchTeam1Name: 'Levante',
         matchTeam2Name: 'Atletico Madrid',
-        arms1src: './photos/La Liga/Levante.jpg',
+        arms1src: './photos/La Liga/Levante_UD.jpg',
         arms2src: './photos/La Liga/Atletico Madrid.jpg'
 
 
