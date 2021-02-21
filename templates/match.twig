@@ -10,9 +10,17 @@
     <div class="board">
         <section class="top-bar">
             <div class="league">
-                <img src="photos/hiszpania.jpeg">
+                <img v-if="matchLeague === 'La Liga'" src="photos/hiszpania.jpeg">
+                <img v-else-if="matchLeague === 'Bundesliga'" src="photos/niemcy.jpeg">
+                <img v-else-if="matchLeague === 'Ligue 1'" src="photos/francja.jpeg">
+                <img v-else-if="matchLeague === 'Premier League'" src="photos/anglia.jpeg">
+                <img v-else-if="matchLeague === 'Serie A'" src="photos/wlochy.jpeg">
                 {% verbatim %}
-                <div class="nameOf" name="nameOf">HISZPANIA: {{matchLeague}}</div>
+                <div v-if="matchLeague === 'La Liga'" class="nameOf" name="nameOf">HISZPANIA: {{matchLeague}}</div>
+                <div v-else-if="matchLeague === 'Bundesliga'" class="nameOf" name="nameOf">NIEMCY: {{matchLeague}}</div>
+                <div v-else-if="matchLeague === 'Ligue 1'" class="nameOf" name="nameOf">FRANCJA: {{matchLeague}}</div>
+                <div v-else-if="matchLeague === 'Premier League'" class="nameOf" name="nameOf">ANGLIA: {{matchLeague}}</div>
+                <div v-else-if="matchLeague === 'Serie A'" class="nameOf" name="nameOf">WŁOCHY: {{matchLeague}}</div>
                 {% endverbatim %}
             </div>
             <div class="date" name="date">
