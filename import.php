@@ -15,7 +15,7 @@
     {
         $path = $_FILES['csvFile']['tmp_name'];
         $size = $_FILES['csvFile']['size'];
-        import_csv_into_databe($path, $size);
+        import_csv_into_databe($path, $size, $host, $db_user, $db_password, $db_name);
     }
 
     $_SESSION["info"] = 2;
