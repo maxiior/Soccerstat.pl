@@ -26,7 +26,8 @@
     !isset($_POST['corner1']) ||
     !isset($_POST['corner2']) ||
     !isset($_POST['fauls1']) ||
-    !isset($_POST['fauls2']))
+    !isset($_POST['fauls2']) ||
+    !isset($_POST['date']))
     {
         $_SESSION["info"] = -1;
         header('Location: index.php');
@@ -67,6 +68,7 @@
         $corner2 =htmlentities($_POST['corner2'], ENT_QUOTES, "UTF-8");
         $fauls1 =htmlentities($_POST['fauls1'], ENT_QUOTES, "UTF-8");
         $fauls2 =htmlentities($_POST['fauls2'], ENT_QUOTES, "UTF-8");
+        $date =htmlentities($_POST['date'], ENT_QUOTES, "UTF-8");
 		
 
         $sq= "SELECT c.id FROM clubs as c WHERE c.name = '$team1'";
@@ -82,8 +84,8 @@
         //dodawanie daty z domyslna wartoscia        
         $sql = "INSERT INTO games (club_id, club2_id, date, team1, team2, score1, score2, possession1, possession2, apasses1, apasses2,
         shoots1, shoots2, ashoots1, ashoots2, yellow1, yellow2, red1, red2, free1, free2, penalty1, penalty2,
-        corner1, corner2, fauls1, fauls2)
-        VALUES ($row[0],$row2[0], '2020-02-02', '$team1', '$team2', $score1,$score2,$possession1,$possession2,$apasses1,$apasses2,$shoots1,$shoots2,$ashoots1,$ashoots2,$yellow1,$yellow2,$red1,$red2,$free1,$free2,$penalty1,$penalty2,$corner1,$corner2,$fauls1,$fauls2)";
+        corner1, corner2, fauls1, fauls2, AddDate)
+        VALUES ($row[0],$row2[0], '$date', '$team1', '$team2', $score1,$score2,$possession1,$possession2,$apasses1,$apasses2,$shoots1,$shoots2,$ashoots1,$ashoots2,$yellow1,$yellow2,$red1,$red2,$free1,$free2,$penalty1,$penalty2,$corner1,$corner2,$fauls1,$fauls2, NOW())";
 
         if($connection->query($sql))
         {

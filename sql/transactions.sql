@@ -1,16 +1,16 @@
 SET TRANSACTION ISOLATION LEVEL READ UNCOMITTED
 BEGIN PLAYER_RATING_IN_MATCH
 
-	EXECUTE dbo.CALCULATE_PLAYER_RATING(1,2,3,4,5,6,7,8,9,10);
-	EXECUTE dbo.CALCULATE_PLAYER_SEASON_RATING(1, 2009);
+	EXECUTE CALCULATE_PLAYER_RATING(1,2,3,4,5,6,7,8,9,10);
+	EXECUTE CALCULATE_PLAYER_SEASON_RATING(1, 2009);
 
 END PLAYER_RATING_IN_MATCH
 
 SET TRANSACTION ISOLATION LEVEL READ UNCOMITTED
 BEGIN TEAM_RATING_IN_MATCH
 
-	EXECUTE dbo.CALCULATE_TEAM_RATING(1,2,3,4,5,6,7,8,9,10);
-	EXECUTE dbo.CALCULATE_TEAM_SEASON_RATING(1, 2009);
+	EXECUTE CALCULATE_TEAM_RATING(1,2,3,4,5,6,7,8,9,10);
+	EXECUTE CALCULATE_TEAM_SEASON_RATING(1, 2009);
 
 END TEAM_RATING_IN_MATCH
 
@@ -19,7 +19,7 @@ BEGIN TOTY
 
 	declare @bramkarz INT 
 	set @bramkarz = select top 1 zawodnik_id
-	from pilkarz join Ocena_zawodnika_w_sezonie on pilkarz.id=Ocena_zawodnika_w_sezonie.zawodnik_d
+	from pilkarz join Ocena_zawodnika_w_sezonie on pilkarz.id=Ocena_zawodnika_w_sezonie.zawodnik_id
 	where pilkarz.position like 'GK'
 	order by ocena_w_sezonie
 
@@ -77,7 +77,7 @@ BEGIN TOTY
 	where pilkarz.position like 'N' or 'SN' or 'SPO'
 	order by ocena_w_sezonie
 
-	EXECUTE dbo.CREATE_TOTY(@sezon_id,@bramkarz,@lewy_obronca,@prawy_obronca,@srodkowy_obronca,
+	EXECUTE CREATE_TOTY(@sezon_id,@bramkarz,@lewy_obronca,@prawy_obronca,@srodkowy_obronca,
 	@lewy_pomocnik,@prawy_pomocnik,@srodkowy_pomocnik,
 	@lewy_napastnik,@prawy_napastnik,@srodkowy_napastnik)
 
